@@ -12,7 +12,7 @@ class Form extends Component {
     console.log(this.state);
   };
 
-  onHandleSubmit = (e) => {
+  onHandleSubmit = e => {
     console.log("Handling Submit...");
     this.props.handleSubmit(this.state);
     e.preventDefault();
@@ -43,7 +43,6 @@ class Form extends Component {
           <button className="h-btn" onClick={this.onHandleSubmit}>
             Submit
           </button>
-         
         </form>
       </div>
     );
