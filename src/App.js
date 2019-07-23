@@ -44,10 +44,10 @@ class App extends Component {
     console.log("Editing bird ID#" + id);
   };
 
-  handleSubmit = e => {
-    console.log("Submitting new bird...");
-    console.log(e.target.birdName.value, e.target.birdHabitat.value);
-    e.preventDefault();
+  handleSubmit = dataFromForm => {
+    console.log("Submitting new bird..." + dataFromForm);
+    this.setState({ birds: [...this.state.birds, dataFromForm] });
+    console.log(this.state);
   };
 
   render() {
