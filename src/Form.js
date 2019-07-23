@@ -20,8 +20,7 @@ class Form extends Component {
 
   render() {
     return (
-      <div className="container-inner">
-        <h4>Form</h4>
+      <div className="container-inner-tight">
         <form className="h-form">
           <label className="h-label">Bird Name</label>
           <input

@@ -48,7 +48,7 @@ h4 {
   /* color 11 */
   color: white;
   padding: 0;
-  margin: 5px;
+  /* margin: 5px; */
 }
 
 .dark {
@@ -72,10 +72,18 @@ h4 {
 
 .container-inner {
   width: 95%;
-  margin: 10px auto;
+  margin: 10px auto 20px;
   /* background color 2 */
   background-color: #3c4a59;
+  border-radius: 5px;
   padding: 10px;
+}
+
+.container-inner-tight {
+  width: 95%;
+  margin: 0 auto;
+  /* background color 2 */
+  background-color: #3c4a59;
   border-radius: 5px;
 }
 
@@ -146,10 +154,10 @@ button {
 
 .h-form {
   width: 50%;
-  margin: 25px auto;
+  margin: 10px auto;
   /* border color 9 */
   border: 1px solid #acbac9;
-  padding: 15px;
+  padding: 5px;
   box-sizing: border-box;
 }
 
