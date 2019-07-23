@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Table from "./Table";
-import Form from "./Form";
 import ToggleableForm from "./ToggleableForm";
 import "./App.css";
 
@@ -33,8 +32,16 @@ class App extends Component {
         birdHabitat: "Open Woodland"
       }
     ],
+
     nextId: 105,
-    formOpen: false
+    formOpen: false,
+    isEdit: false,
+
+    editData: {
+      birdId: -999,
+      birdName: "",
+      birdHabitat: ""
+    }
   };
 
   handleDelete = id => {
@@ -47,11 +54,21 @@ class App extends Component {
     let birdToEdit = this.state.birds.filter(entry => entry.birdId === id);
     console.log("Editing bird ID#" + id);
     this.setState({
-      formOpen: true
+      formOpen: true,
+      isEdit: true,
+      editData: {
+        birdId: birdToEdit[0].birdId,
+        birdName: birdToEdit[0].birdName,
+        birdHabitat: birdToEdit[0].birdHabitat
+      }
     });
   };
 
-  handleSubmit = dataFromForm => {
+  handleUpdateSubmit() {
+    console.log("Handling update submission...");
+  }
+
+  handleCreateSubmit = dataFromForm => {
     console.log("Submitting new bird..." + dataFromForm);
     this.setState({
       birds: [...this.state.birds, dataFromForm],
@@ -61,12 +78,12 @@ class App extends Component {
     console.log(this.state);
   };
 
-  openForm = () => {
+  handleOpenForm = () => {
     console.log("Opening form...");
     this.setState({ formOpen: true });
   };
 
-  closeForm = () => {
+  handleCloseForm = () => {
     console.log("Closing form...");
     this.setState({ formOpen: false });
   };
@@ -81,11 +98,13 @@ class App extends Component {
           handleEdit={this.handleEdit}
         />
         <ToggleableForm
-          handleSubmit={this.handleSubmit}
-          openForm={this.openForm}
-          closeForm={this.closeForm}
+          handleCreateSubmit={this.handleCreateSubmit}
+          handleOpenForm={this.handleOpenForm}
+          handleCloseForm={this.handleCloseForm}
           isFormOpen={this.state.formOpen}
           nextId={this.state.nextId}
+          isEdit={this.state.isEdit}
+          birdData={this.state.editData}
         />
       </div>
     );

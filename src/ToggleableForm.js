@@ -9,13 +9,15 @@ class ToggleableForm extends Component {
           <div>
             <h3>Form</h3>
             <Form
-              handleSubmit={this.props.handleSubmit}
+              handleCreateSubmit={this.props.handleCreateSubmit}
               nextId={this.props.nextId}
+              birdData={this.props.birdData}
+              isEdit={this.props.isEdit}
             />
-            <button onClick={this.props.closeForm}>Cancel</button>
+            <button onClick={this.props.handleCloseForm}>Cancel</button>
           </div>
         ) : (
-          <button onClick={this.props.openForm}>Add New Bird</button>
+          <button onClick={this.props.handleOpenForm}>Add New Bird</button>
         )}
       </div>
     );

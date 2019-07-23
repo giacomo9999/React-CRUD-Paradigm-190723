@@ -7,6 +7,17 @@ class Form extends Component {
     birdHabitat: ""
   };
 
+  componentDidMount() {
+    if (this.props.isEdit) {
+      console.log("Editing mode...");
+      this.setState({
+        birdId: this.props.birdData.birdId,
+        birdName: this.props.birdData.birdName,
+        birdHabitat: this.props.birdData.birdHabitat
+      });
+    }
+  }
+
   handleChange = e => {
     this.setState({ [e.target.name]: e.target.value });
     console.log(this.state);
@@ -20,15 +31,17 @@ class Form extends Component {
     };
 
     console.log("Handling Submit...");
-    this.props.handleSubmit(this.state);
+    this.props.handleCreateSubmit(this.state);
     this.setState(initialState);
     e.preventDefault();
   };
 
   render() {
+    console.log("Form Props...",this.props);
     return (
       <div className="container-inner-tight">
         <form className="h-form">
+          <h4>{`ID# ${this.state.birdId}`}</h4>
           <label className="h-label">Bird Name</label>
           <input
             className="h-input"
