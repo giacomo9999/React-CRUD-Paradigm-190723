@@ -19,6 +19,7 @@ Cool Grey 11: #C5D3E2
       rel="stylesheet"
     /> */
 
+/* Organizational */
 * {
   padding: 0;
   margin: 0;
@@ -73,6 +74,8 @@ h4 {
   border-radius: 5px;
 }
 
+/* Lists: */
+
 ul {
   width: 80%;
   border-radius: 5px;
@@ -92,18 +95,7 @@ li {
   color: #1c2a39;
 }
 
-button {
-  font-family: "Oswald", sans-serif;
-  /* background color 11 */
-  background-color: #c5d3e2;
-  /* color 0 */
-  color: #1c2a39;
-  height: 25px;
-  margin: 5px;
-  font-size: 0.8em;
-  font-weight: normal;
-  border-radius: 3px;
-}
+/* Tables: */
 
 table {
   padding: 10px;
@@ -129,6 +121,23 @@ tr {
 td {
   text-align: left;
 }
+
+/* Button (General Use) */
+
+button {
+  font-family: "Oswald", sans-serif;
+  /* background color 11 */
+  background-color: #c5d3e2;
+  /* color 0 */
+  color: #1c2a39;
+  height: 25px;
+  margin: 5px;
+  font-size: 0.8em;
+  font-weight: normal;
+  border-radius: 3px;
+}
+
+/* Form (General Use)*/
 
 .h-form {
   width: 50%;
