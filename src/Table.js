@@ -21,10 +21,10 @@ const TableBody = props => {
         <td>{entry.birdName}</td>
         <td>{entry.birdHabitat}</td>
         <td>
-          <button>Edit</button>
+          <button onClick={()=>props.handleEdit(entry.birdId)}>Edit</button>
         </td>
         <td>
-          <button>Delete</button>
+          <button onClick={()=>props.handleDelete(entry.birdId)}>Delete</button>
         </td>
       </tr>
     );
@@ -38,7 +38,7 @@ const Table = props => {
       <h3>Bird Table</h3>
       <table>
         <TableHead />
-        <TableBody birdList={props.birdList} />
+        <TableBody birdList={props.birdList} handleDelete={props.handleDelete} handleEdit={props.handleEdit}/>
       </table>
     </div>
   );
