@@ -33,7 +33,8 @@ class App extends Component {
         birdHabitat: "Open Woodland"
       }
     ],
-    editFormOpen: false
+    nextId: 105,
+    formOpen: false
   };
 
   handleDelete = id => {
@@ -43,24 +44,31 @@ class App extends Component {
   };
 
   handleEdit = id => {
+    let birdToEdit = this.state.birds.filter(entry => entry.birdId === id);
     console.log("Editing bird ID#" + id);
-    this.setState({ editFormOpen: true });
+    this.setState({
+      formOpen: true
+    });
   };
 
   handleSubmit = dataFromForm => {
     console.log("Submitting new bird..." + dataFromForm);
-    this.setState({ birds: [...this.state.birds, dataFromForm] });
+    this.setState({
+      birds: [...this.state.birds, dataFromForm],
+      nextId: this.state.nextId + 1,
+      formOpen: false
+    });
     console.log(this.state);
   };
 
   openForm = () => {
     console.log("Opening form...");
-    this.setState({ editFormOpen: true });
+    this.setState({ formOpen: true });
   };
 
   closeForm = () => {
     console.log("Closing form...");
-    this.setState({ editFormOpen: false });
+    this.setState({ formOpen: false });
   };
 
   render() {
@@ -76,7 +84,8 @@ class App extends Component {
           handleSubmit={this.handleSubmit}
           openForm={this.openForm}
           closeForm={this.closeForm}
-          isFormOpen={this.state.editFormOpen}
+          isFormOpen={this.state.formOpen}
+          nextId={this.state.nextId}
         />
       </div>
     );

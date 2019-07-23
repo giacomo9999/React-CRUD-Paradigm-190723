@@ -8,7 +8,10 @@ class ToggleableForm extends Component {
         {this.props.isFormOpen ? (
           <div>
             <h3>Form</h3>
-            <Form handleSubmit={this.props.handleSubmit} />
+            <Form
+              handleSubmit={this.props.handleSubmit}
+              nextId={this.props.nextId}
+            />
             <button onClick={this.props.closeForm}>Cancel</button>
           </div>
         ) : (

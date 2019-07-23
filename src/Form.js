@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 class Form extends Component {
   state = {
-    birdId: 999,
+    birdId: this.props.nextId,
     birdName: "",
     birdHabitat: ""
   };
@@ -13,8 +13,15 @@ class Form extends Component {
   };
 
   onHandleSubmit = e => {
+    let initialState = {
+      birdId: "",
+      birdName: "",
+      birdHabitat: ""
+    };
+
     console.log("Handling Submit...");
     this.props.handleSubmit(this.state);
+    this.setState(initialState);
     e.preventDefault();
   };
 
