@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Table from "./Table";
+import Form from "./Form";
 import "./App.css";
 
 class App extends Component {
@@ -43,15 +44,22 @@ class App extends Component {
     console.log("Editing bird ID#" + id);
   };
 
+  handleSubmit = e => {
+    console.log("Submitting new bird...");
+    console.log(e.target.birdName.value, e.target.birdHabitat.value);
+    e.preventDefault();
+  };
+
   render() {
     return (
-      <div className="container-primary">
+      <div className="container-outer">
         <h3>App Component</h3>
         <Table
           birdList={this.state.birds}
           handleDelete={this.handleDelete}
           handleEdit={this.handleEdit}
         />
+        <Form handleSubmit={this.handleSubmit} />
       </div>
     );
   }

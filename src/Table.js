@@ -34,7 +34,7 @@ const TableBody = props => {
 
 const Table = props => {
   return (
-    <div className="container-secondary">
+    <div className="container-inner">
       <h3>Bird Table</h3>
       <table>
         <TableHead />

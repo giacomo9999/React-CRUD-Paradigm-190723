@@ -56,7 +56,12 @@ h4 {
   color: black;
 }
 
-.container-primary {
+.light {
+  /* color 0 */
+  color: white;
+}
+
+.container-outer {
   width: 30%;
   padding: 10px;
   margin: 30px auto;
@@ -65,9 +70,9 @@ h4 {
   border-radius: 5px;
 }
 
-.container-secondary {
+.container-inner {
   width: 95%;
-  margin: 0 auto;
+  margin: 10px auto;
   /* background color 2 */
   background-color: #3c4a59;
   padding: 10px;
