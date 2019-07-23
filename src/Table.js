@@ -32,18 +32,16 @@ const TableBody = props => {
   return <tbody>{birdRows}</tbody>;
 };
 
-class Table extends Component {
-  render() {
-    return (
-      <div className="container-secondary">
-        <h3>Bird Table</h3>
-        <table>
-          <TableHead />
-          <TableBody birdList={this.props.birdList} />
-        </table>
-      </div>
-    );
-  }
-}
+const Table = props => {
+  return (
+    <div className="container-secondary">
+      <h3>Bird Table</h3>
+      <table>
+        <TableHead />
+        <TableBody birdList={props.birdList} />
+      </table>
+    </div>
+  );
+};
 
 export default Table;
