@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Table from "./Table";
 import Form from "./Form";
+import ToggleableForm from "./ToggleableForm";
 import "./App.css";
 
 class App extends Component {
@@ -59,7 +60,8 @@ class App extends Component {
           handleDelete={this.handleDelete}
           handleEdit={this.handleEdit}
         />
-        <Form handleSubmit={this.handleSubmit} />
+        <ToggleableForm handleSubmit={this.handleSubmit} />
+        {/* <Form handleSubmit={this.handleSubmit} /> */}
       </div>
     );
   }
