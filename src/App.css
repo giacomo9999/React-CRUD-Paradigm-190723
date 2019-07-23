@@ -57,9 +57,9 @@ h4 {
 }
 
 .container-primary {
-  width: 20%;
+  width: 30%;
   padding: 10px;
-  margin: 0 auto;
+  margin: 30px auto;
   /* background color 5 */
   background-color: #6c7a89;
   border-radius: 5px;
@@ -125,16 +125,16 @@ td {
 /* Button (General Use) */
 
 button {
+  /* background color 6 */
+  background-color: #7c8a99;
+  color: white;
+  display: block;
+  margin: 4px auto;
+  border: none;
+  padding: 3px 10px;
+  font-size: 14px;
   font-family: "Oswald", sans-serif;
-  /* background color 11 */
-  background-color: #c5d3e2;
-  /* color 0 */
-  color: #1c2a39;
-  height: 25px;
-  margin: 5px;
-  font-size: 0.8em;
-  font-weight: normal;
-  border-radius: 3px;
+  border-radius: 5px;
 }
 
 /* Form (General Use)*/
