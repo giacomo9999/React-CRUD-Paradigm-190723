@@ -8,6 +8,8 @@ class Form extends Component {
   };
 
   componentDidMount() {
+    console.log("CDM says Form Props...", this.props);
+    console.log("CDM says Form State...", this.state);
     if (this.props.isEdit) {
       console.log("Editing mode...");
       this.setState({
@@ -30,14 +32,18 @@ class Form extends Component {
       birdHabitat: ""
     };
 
-    console.log("Handling Submit...");
-    this.props.handleCreateSubmit(this.state);
+    console.log("Handling Submit...Edit=" + this.props.isEdit);
+    if (this.props.isEdit) {
+      this.props.handleUpdateSubmit(this.state);
+    } else {
+      this.props.handleCreateSubmit(this.state);
+    }
+
     this.setState(initialState);
     e.preventDefault();
   };
 
   render() {
-    console.log("Form Props...",this.props);
     return (
       <div className="container-inner-tight">
         <form className="h-form">

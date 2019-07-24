@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Table from "./Table";
-import ToggleableForm from "./ToggleableForm";
+import FormOrButton from "./FormOrButton";
 import "./App.css";
 
 class App extends Component {
@@ -28,17 +28,27 @@ class App extends Component {
       },
       {
         birdId: 104,
+        birdName: "Mid-Level Manager",
+        birdHabitat: "Urban Office"
+      },
+      {
+        birdId: 105,
         birdName: "Blue Jay",
         birdHabitat: "Open Woodland"
+      },
+      {
+        birdId: 106,
+        birdName: "Yellow-Bellied Sapsucker",
+        birdHabitat: "South Brooklyn"
       }
     ],
 
-    nextId: 105,
+    nextId: 107,
     formOpen: false,
     isEdit: false,
 
     editData: {
-      birdId: -999,
+      birdId: "",
       birdName: "",
       birdHabitat: ""
     }
@@ -51,22 +61,42 @@ class App extends Component {
   };
 
   handleEdit = id => {
-    let birdToEdit = this.state.birds.filter(entry => entry.birdId === id);
-    console.log("Editing bird ID#" + id);
+    if (this.state.formOpen) {
+      alert("Form already open - Close form and try again");
+    } else {
+      const birdToEdit = this.state.birds.filter(entry => entry.birdId === id);
+      console.log("Editing bird ID#" + id);
+      this.setState({
+        formOpen: true,
+        isEdit: true,
+        editData: {
+          birdId: birdToEdit[0].birdId,
+          birdName: birdToEdit[0].birdName,
+          birdHabitat: birdToEdit[0].birdHabitat
+        }
+      });
+    }
+  };
+
+  handleUpdateSubmit = dataFromForm => {
+    console.log("Handling update submission..." + dataFromForm.birdName);
+    const updatedBirds = this.state.birds.map(entry => {
+      if (entry.birdId === dataFromForm.birdId) {
+        return dataFromForm;
+      } else {
+        return entry;
+      }
+    });
     this.setState({
-      formOpen: true,
-      isEdit: true,
+      birds: updatedBirds,
+      formOpen: false,
       editData: {
-        birdId: birdToEdit[0].birdId,
-        birdName: birdToEdit[0].birdName,
-        birdHabitat: birdToEdit[0].birdHabitat
+        birdId: "",
+        birdName: "",
+        birdHabitat: ""
       }
     });
   };
-
-  handleUpdateSubmit() {
-    console.log("Handling update submission...");
-  }
 
   handleCreateSubmit = dataFromForm => {
     console.log("Submitting new bird..." + dataFromForm);
@@ -80,12 +110,19 @@ class App extends Component {
 
   handleOpenForm = () => {
     console.log("Opening form...");
-    this.setState({ formOpen: true });
+    this.setState({ formOpen: true, isEdit: false });
   };
 
   handleCloseForm = () => {
     console.log("Closing form...");
-    this.setState({ formOpen: false });
+    this.setState({
+      formOpen: false,
+      editData: {
+        birdId: "",
+        birdName: "",
+        birdHabitat: ""
+      }
+    });
   };
 
   render() {
@@ -97,8 +134,9 @@ class App extends Component {
           handleDelete={this.handleDelete}
           handleEdit={this.handleEdit}
         />
-        <ToggleableForm
+        <FormOrButton
           handleCreateSubmit={this.handleCreateSubmit}
+          handleUpdateSubmit={this.handleUpdateSubmit}
           handleOpenForm={this.handleOpenForm}
           handleCloseForm={this.handleCloseForm}
           isFormOpen={this.state.formOpen}
